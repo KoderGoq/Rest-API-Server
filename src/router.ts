@@ -4,29 +4,28 @@ necesitaremos un ROUTING */
 
 
 import { Router } from 'express';
+import { createProduct } from './handlers/product';
 
 
 const router = Router();
 
-// Routing
+// Routing - EndPoints
 router.get('/', (req, res) => {
-  res.json('Desde get')
+  res.json('Desde get');
 });
 
-router.post('/', (req, res) => {
-  res.json('Desde post')
-});
+router.post('/', createProduct);
 
 router.put('/', (req, res) => {
-  res.json('Desde put')
+  res.json('Desde put');
 });
 
 router.patch('/', (req, res) => {
-  res.json('Desde patch')
+  res.json('Desde patch');
 });
 
 router.delete('/', (req, res) => {
-  res.json('Desde delete')
+  res.json('Desde delete');
 });
 
 export default router;

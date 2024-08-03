@@ -25,6 +25,10 @@ connectDB();
 
 // Conexion al servidor y routing
 const server = express();
+
+// Leer datos de formularios
+server.use(express.json());
+
 server.use('/api/products', router);
 
 
