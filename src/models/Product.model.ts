@@ -9,18 +9,18 @@ class Product extends Model {   // Creamos el modelo de la base de datos
   @Column({
     type: DataType.STRING(100) // DataType es para tipar el modelos y decirle el tipo de dato que usaremos
   })
-  name: string
+  declare name: string
 
   @Column({
     type: DataType.FLOAT(6, 2)
   })
-  price: number
+  declare price: number
 
   @Default(true) // Cada que agruegemos un nuevo producto siempre sera TRUE
   @Column({
     type: DataType.BOOLEAN()
   })
-  availability: boolean
+  declare availability: boolean
 }
 
 export default Product
