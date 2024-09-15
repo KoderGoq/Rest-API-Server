@@ -3,8 +3,12 @@ import Product from '../models/Product.model';
 
 
 export const createProduct = async (req: Request, res: Response) => {
-  const product = await Product.create(req.body); // Creamos un nuevo producto
-  res.json({ data: product }); // Lo mostramos como JSON
+  try {
+    const product = await Product.create(req.body); // Creamos un nuevo producto
+    res.status(201).json({ data: product }); // Lo mostramos como JSON
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export const getProducts = async (req: Request, res: Response) => {
