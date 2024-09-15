@@ -2,6 +2,8 @@ import express from 'express';
 import router from './router';
 import db from './config/db';
 import colors from 'colors';
+import swaggerUI from 'swagger-ui-express';
+import swaggerSpec, { swaggerUIOptions } from './config/swagger';
 
 
 
@@ -11,7 +13,7 @@ const connectDB = async () => {
 
     await db.authenticate();
     db.sync();
-    // console.log(colors.cyan.bold('Conexion exitosa a la DB'));
+    console.log(colors.cyan.bold('Conexion exitosa a la DB'));
 
   } catch (error) {
     // console.log(error);
@@ -31,9 +33,7 @@ server.use(express.json());
 
 server.use('/api/products', router);
 
-server.get('/api', (req, res) => {
-  res.json({ msg: 'Desde API' })
-})
-
+// Docs
+server.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec, swaggerUIOptions))
 
 export default server;
